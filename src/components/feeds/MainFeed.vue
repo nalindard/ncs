@@ -13,7 +13,7 @@ const { getshowWelcomBanner } = storeToRefs(store)
 
 <template>
     <div
-        class="bg-purple-200 flex flex-col justify-between items-center pt-5 pb-2 px-2 md:border-l-[17px] border-0 border-purple-700">
+        class="bg-purple-200 flex flex-col justify-between items-center pt-2 pb-2 px-2 md:border-l-[17px] border-0 border-purple-700">
         <!-- Welcome -->
         <WelcomeItem v-if="getshowWelcomBanner"/>
         <!-- List -->

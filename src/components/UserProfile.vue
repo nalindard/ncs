@@ -9,8 +9,8 @@
         absolute top-0 left-0 scale-110 bg-center bg-cover blur-lg
         bg-[url('https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80')] w-full h-full"></span>
         <!-- User profile -->
-        <div class="absolute top-0 left-0 w-full h-full bg-opacity-25 bg-purple-400 p-4 flex justify-start items-end">
-            <div class="flex flex-col items-leftw-full h-full">
+        <div class="absolute top-0 left-0 w-full h-full bg-opacity-25 bg-purple-400 p-2 flex justify-start items-end">
+            <div class="flex flex-col items-left justify-between w-full h-full">
                 <img class="inline-block h-5/12 w-5/12 rounded-full"
                     src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80"
                     alt="Image Description" />

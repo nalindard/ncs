@@ -24,7 +24,7 @@ const { updateCurrentPlayList, addToCurrentPlayList } = musicStore
 <template>
     <div class="flex flex-col 2xl:w-2/12 lg:w-3/12 md:w-4/12 sm:w-2/4 py-2 px-2 mb-2 ">
         <div class="border p-1 bg-purple-500 hover:scale-105 ">
-            <span class="relative group  overflow-hidden song-img">
+            <span class="relative group  overflow-hidden song-img grid place-items-center">
                 <img :src="props.data.coverUrl" alt="song-thumbnail">
                 <span
                     class="bg-purple-500 bg-opacity-50 backdrop-blur-sm absolute w-full opacity-0 group-hover:opacity-100 inset-0 flex justify-center items-center">

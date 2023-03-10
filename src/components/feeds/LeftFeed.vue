@@ -30,6 +30,7 @@ const { toogleLeftFeed } = uiStore
             <UserProfile />
         </div>
 
+        <!-- Unhide this -->
         <div class="w-full h-1/4 px-2 mb-14 mt-7 hidden">
             <SongInfo />
         </div>

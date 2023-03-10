@@ -14,11 +14,11 @@ import ListSongCard from './ListSongCard.vue';
             </div>
         </div>
         <div class="w-full h-full overflow-y-scroll py-4 px-2">
-            <ListSongCard />
-            <ListSongCard />
-            <ListSongCard />
-            <ListSongCard />
-            <ListSongCard />
+            <!-- <ListSongCard :song="{}" :number="00"/> -->
+            <!-- <ListSongCard :song="{}" :number="00"/> -->
+            <!-- <ListSongCard :song="{}" :number="00"/> -->
+            <!-- <ListSongCard :song="{}" :number="00"/> -->
+            <!-- <ListSongCard :song="{}" :number="00"/> -->
         </div>
     </div>
 </template>

@@ -16,7 +16,7 @@ const { getlistContainerTab, getlistContainerTabList } = storeToRefs(store)
 
 <template>
     <div class="w-full flex-grow py-2 px-2 my-2 rounded-xl relative overflow-clip ">
-        <span class="absolute inset-0 h-full w-16 border-r flex flex-col justify-evenly ">
+        <span class="absolute inset-0 h-full w-16 border-r flex flex-col  ">
             <ListContainerButton v-for="tab in getlistContainerTabList" :key="tab.id" :name="tab.name" :icon="tab.icon" />
         </span>
         <span class="absolute top-0 right-0 h-full w-11/12 flex-grow">
