@@ -3,6 +3,93 @@ import PlayerButtonBar from './player_controller_items/PlayerButtonBar.vue';
 import SoundBar from './player_controller_items/SoundBar.vue';
 import TimeLine from './player_controller_items/TimeLine.vue';
 
+import { storeToRefs } from 'pinia'
+import { useMusicStore } from '@/stores/MusicStore'
+import { useSongStore } from '@/stores/SongStore'
+import { ref, watch, toRaw, watchEffect } from 'vue';
+
+const musicStore = useMusicStore()
+const { getPlaying, getVolume, getcurrentPlayList, getCurrentPlayListLength } = storeToRefs(musicStore)
+const { tooglePlay } = musicStore
+
+const songStore = useSongStore()
+const { getSong, getSongSeekedTime, } = storeToRefs(songStore)
+const { changeSong, changeSongDuration, changegeCurrentTime } = songStore
+
+const song = new Audio()
+let songIndex = +0
+let songCount = 0
+const songLoading = ref(true)
+
+watch(() => getcurrentPlayList.value, () => updateSongStore())
+watch(() => getSong.value, () => songPlay())
+watch(() => getPlaying.value, () => getPlaying.value ? song.play() : songPause())
+watch(() => getVolume.value, () => song.volume = getVolume.value)
+watch(() => getCurrentPlayListLength.value, () => songCount = getCurrentPlayListLength.value)
+watch(() => getSongSeekedTime.value, seek)
+
+function updateSongStore() {
+    console.log('Song store updated -->', toRaw(getcurrentPlayList.value)[songIndex]);
+    changeSong(toRaw(getcurrentPlayList.value)[songIndex])
+}
+function songPlay() {
+    // console.log(getSong.value);
+    song.src = getSong.value.download.regular
+    song.play()
+    song.addEventListener('loadedmetadata', songDetails)
+    song.addEventListener("ended", () => songEnded())
+    tooglePlay(true)
+}
+function songPause() {
+    song.pause()
+    tooglePlay(false)
+}
+function songEnded() {
+    tooglePlay(false)
+    nextSong()
+}
+function preSong() {
+    if (songIndex >= 1) {
+        songIndex--
+        changeSong(toRaw(getcurrentPlayList.value)[songIndex])
+    } else {
+        changeSong(toRaw(getcurrentPlayList.value)[0])
+        alert('This is the begining - 😊')
+    }
+}
+function nextSong() {
+    if ((songCount - 1) > songIndex) {
+        songIndex++
+        changeSong(toRaw(getcurrentPlayList.value)[songIndex])
+    } else {
+        songIndex = 0
+        changeSong(toRaw(getcurrentPlayList.value)[songIndex])
+        console.log('Last song -->');
+    }
+}
+function songDetails() {
+    changeSongDuration(song.duration)
+    console.log('😊😊😊😊😊😊😊😊😊😊😊😊');
+    console.log('duration \t --> ', song.duration)
+    console.log('networkState \t --> ', song.networkState)
+    console.log('readyState \t --> ', song.readyState)
+}
+function seek() {
+    song.currentTime = getSongSeekedTime.value
+    console.log('Song seeked !')
+}
+
+watchEffect(() => console.log(song.currentTime))
+
+let intervel = setInterval(timeChange, 1000)
+
+function timeChange() {
+    if (getPlaying.value) {
+        changegeCurrentTime(song.currentTime)
+        console.log(song.currentTime);
+    }
+}
+
 </script>
 
 <template>
@@ -12,9 +99,20 @@ import TimeLine from './player_controller_items/TimeLine.vue';
         <TimeLine />
 
         <!-- Volume Slider -->
-        <SoundBar />
+        <SoundBar class="hidden" />
 
         <!-- Buttons -->
-        <PlayerButtonBar />
+        <PlayerButtonBar @preSong="preSong" @nextSong="nextSong" />
     </div>
 </template>
+
+
+<!-- video.addEventListener('loadstart', handleEvent);
+video.addEventListener('progress', handleEvent);
+video.addEventListener('canplay', handleEvent);
+video.addEventListener('canplaythrough', handleEvent); -->
+<!-- 
+    video.addEventListener("timeupdate", (event) => {
+  console.log("The currentTime attribute has been updated. Again.");
+});
+ -->

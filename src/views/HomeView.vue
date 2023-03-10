@@ -3,30 +3,6 @@ import LeftFeed from '@/components/feeds/LeftFeed.vue';
 import MainFeed from '@/components/feeds/MainFeed.vue';
 import RightFeed from '@/components/feeds/RightFeed.vue';
 
-import { storeToRefs } from 'pinia';
-import { watch } from 'vue';
-import { useUiStore } from '../stores/UiStore';
-const store = useUiStore()
-const { count, doubleCount } = storeToRefs(store)
-const { increment } = store
-
-console.log(doubleCount.value);
-// watch(doubleCount, ()=> console.log(doubleCount.value))
-watch(()=> count.value, ()=> {
-  console.log(doubleCount.value)
-  // inc()
-})
-
-// function inc(){
-//   setTimeout(() => {
-//     store.increment()
-//   }, 1)
-// }
-
-// inc()
-
-// console.log(count.value);
-
 </script>
 
 <template>

@@ -1,23 +1,27 @@
 <script setup>
 import SongCardSubMenu from '../SongCardSubMenu.vue';
 
+const props = defineProps({
+    number: Number,
+    song: Object
+})
+
 </script>
 
 <template>
     <div class="bg-purple-400 w-full px-4 py-2 mb-2 rounded-md shadow-md flex">
         <!-- Number -->
         <span class="w-1/12 m-auto text-center">
-            <h2 class="text-2xl font-bold">01</h2>
+            <h2 class="text-2xl font-bold">{{ number + 1 > 10 ? number : '0' + number+1 }}</h2>
         </span>
         <!-- Thumbnail -->
         <span class="w-2/12 m-auto">
-            <img src="https://linkstorage.linkfire.com/medialinks/images/4f47815a-79fb-444d-9f79-4ba1ec71fea9/artwork-440x440.jpg" alt="song-thumb"
-            class="w-16 rounded-md">
+            <img :src="song.coverUrl" alt="song-thumbnail" class="w-16 rounded-md">
         </span>
         <!-- Name & Artist -->
         <span class="flex-grow m-auto">
-            <h2 class="text-2xl font-bold">Night begins to shine</h2>
-            <h4 class="text-lg">The lost sky</h4>
+            <h2 class="text-2xl font-bold">{{ song.name || 'No name yet' }}</h2>
+            <h4 class="text-lg">{{ song.artists[0].name }}</h4>
         </span>
         <!-- Sub menu -->
         <span class="w-2/12 m-auto text-center flex justify-evenly relative">

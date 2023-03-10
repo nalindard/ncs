@@ -6,13 +6,23 @@ import UserProfile from '../UserProfile.vue';
 import ExpandableList from '../ExpandableList.vue';
 import SongInfo from '../SongInfo.vue';
 
+import { useUiStore } from '../../stores/UiStore';
+import { storeToRefs } from 'pinia';
+
+const uiStore = useUiStore()
+const { getShowLeftFeed } = storeToRefs(uiStore)
+const { toogleLeftFeed } = uiStore
+
 </script>
 
 <template>
-    <div class="px-4 py-2 w-96 min-h-screen flex flex-col justify-between lg:relative">
+    <div class="px-4 py-2 w-96 min-h-screen flex flex-col justify-between lg:relative "
+        :class="getShowLeftFeed ? '' : 'hidden'">
         <!-- Button -->
-        <span class="bg-red-500 h-20 w-20 absolute z-5">
-            <button></button>
+        <span class="bg-purple-500 bg-opacity-50 h-14 w-14 absolute z-50 top-2 right-4 rounded-full">
+            <button class="w-full h-full grid items-center text-purple-50" @click="toogleLeftFeed(false)">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
         </span>
 
         <!-- User -->

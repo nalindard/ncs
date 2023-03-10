@@ -17,23 +17,25 @@ const { getlistContainerTab, getlistContainerTabList } = storeToRefs(store)
 <template>
     <div class="w-full flex-grow py-2 px-2 my-2 rounded-xl relative overflow-clip ">
         <span class="absolute inset-0 h-full w-16 border-r flex flex-col justify-evenly ">
-            <ListContainerButton v-for="tab in getlistContainerTabList" :key="tab.id" :name="tab.name" :icon="tab.icon"/>
+            <ListContainerButton v-for="tab in getlistContainerTabList" :key="tab.id" :name="tab.name" :icon="tab.icon" />
         </span>
         <span class="absolute top-0 right-0 h-full w-11/12 flex-grow">
             <!-- Default page -->
-            <DefaultPage v-if="getlistContainerTab === 'defaultPage'"/>
+            <KeepAlive>
+                <DefaultPage v-if="getlistContainerTab === 'defaultPage'" />
+            </KeepAlive>
 
             <!-- Current song list -->
-            <CurrentSongList v-if="getlistContainerTab === 'currentSongList'"/>
+            <CurrentSongList v-if="getlistContainerTab === 'currentSongList'" />
 
             <!-- Favourite list -->
-            <FavouritesList v-if="getlistContainerTab === 'favouritesList'"/>
+            <FavouritesList v-if="getlistContainerTab === 'favouritesList'" />
 
             <!-- Search results -->
-            <SearchResultsList v-if="getlistContainerTab === 'searchResultsList'"/>
+            <SearchResultsList v-if="getlistContainerTab === 'searchResultsList'" />
 
             <!-- User info -->
-            <UserInfo v-if="getlistContainerTab === 'userInfo'"/>
+            <UserInfo v-if="getlistContainerTab === 'userInfo'" />
         </span>
     </div>
 </template>
