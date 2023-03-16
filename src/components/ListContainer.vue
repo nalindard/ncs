@@ -5,6 +5,8 @@ import CurrentSongList from './list_container_tabs/CurrentSongList.vue';
 import FavouritesList from './list_container_tabs/FavouritesList.vue';
 import SearchResultsList from './list_container_tabs/SearchResultsList.vue';
 import UserInfo from './list_container_tabs/UserInfo.vue';
+import AudioVisualizer from './list_container_tabs/AudioVisualizer.vue';
+
 
 import { storeToRefs } from 'pinia';
 import { useUiStore } from '../stores/UiStore';
@@ -32,10 +34,15 @@ const { getlistContainerTab, getlistContainerTabList } = storeToRefs(store)
             <FavouritesList v-if="getlistContainerTab === 'favouritesList'" />
 
             <!-- Search results -->
-            <SearchResultsList v-if="getlistContainerTab === 'searchResultsList'" />
+            <KeepAlive>
+                <SearchResultsList v-if="getlistContainerTab === 'searchResultsList'" />
+            </KeepAlive>
 
             <!-- User info -->
             <UserInfo v-if="getlistContainerTab === 'userInfo'" />
+
+            <!-- Audio visualizer -->
+            <AudioVisualizer v-if="getlistContainerTab === 'audioVisualizer'" />
         </span>
     </div>
 </template>

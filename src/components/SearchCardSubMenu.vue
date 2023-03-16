@@ -14,20 +14,20 @@ const { getSong, } = storeToRefs(songStore)
 
 const musicStore = useMusicStore()
 const { getPlaying, } = storeToRefs(musicStore)
-const { tooglePlay, changeCurrentSongIndex, } = musicStore
+const { tooglePlay, changeCurrentSongIndex,updateCurrentPlayList, } = musicStore
 
 const isThePlayingSong = ref(false)
 
 onMounted(() => {
     if (props.song.id === getSong.value.id) isThePlayingSong.value = true
 })
-watch(() => getSong.value, () => props.song === getSong.value
-    ? isThePlayingSong.value = true
-    : isThePlayingSong.value = false)
+watch(() => getSong.value, () => { if (props.song.id === getSong.value.id) isThePlayingSong.value = true })
 
-function handlePlay() {
-    changeCurrentSongIndex(props.number)
-}
+// function handlePlay() {
+//     // tooglePlay(!getPlaying)
+//     // changeCurrentSongIndex(props.number)
+//     console.log(props.song);
+// }
 
 </script>
 
@@ -38,9 +38,13 @@ function handlePlay() {
         <button @click="">
             <i class="fa-regular fa-heart fa-lg"></i>
         </button>
-        <!-- Play -->
-        <button @click="handlePlay">
+        <!-- Play / Pause -->
+        <button @click="updateCurrentPlayList(song)">
             <i class="fa-solid fa-lg" :class="isThePlayingSong ? 'fa-pause' : 'fa-play'"></i>
+        </button>
+        <!-- Play now- -->
+        <button @click="">
+            <i class="fa-regular fa-heart fa-lg"></i>
         </button>
         <!-- Add next, Remove ... -->
         <button class="">

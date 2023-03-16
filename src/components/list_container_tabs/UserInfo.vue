@@ -17,8 +17,8 @@ import UserProfile from '../UserProfile.vue';
             <hr class="mb-4 w-full  mx-auto">
 
             <!-- Playlists & History -->
-            <ExpandableList />
-            <ExpandableList />
+            <ExpandableList :title="'Play List'" :items="[1]" />
+            <ExpandableList :title="'History'" :items="[1]" />
             <hr class="mb-4 w-full  mx-auto">
         </div>
     </div>

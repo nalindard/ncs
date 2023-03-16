@@ -9,6 +9,7 @@ export const useSongStore = defineStore('SongStore', () => {
     const songDuration = ref(0)
     const songSeekedTime = ref(0)
     const currentTime = ref(0)
+    const visualizerData = ref([])
 
     // Getters,
     const getSong = computed(() => song.value)
@@ -30,6 +31,7 @@ export const useSongStore = defineStore('SongStore', () => {
         if (s < 10) s = '0' + s
         return { time: currentTime.value, mm: m, ss: s }
     })
+    const getVisualizerData = computed(() => visualizerData.value)
 
     // Actions,
     function changeSong(newSong) {
@@ -54,6 +56,10 @@ export const useSongStore = defineStore('SongStore', () => {
     function changegeCurrentTime(time) {
         currentTime.value = time
     }
+    function changeVisualizerData(data) {
+        visualizerData.value = data
+    }
+
     // Exports,
     return {
         getSong,
@@ -73,5 +79,9 @@ export const useSongStore = defineStore('SongStore', () => {
 
         getCurrentTime,
         changegeCurrentTime,
+
+        // Visualizer,
+        getVisualizerData,
+        changeVisualizerData,
     }
 })

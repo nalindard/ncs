@@ -10,7 +10,6 @@ const { getcurrentPlayList,getCurrentPlayListLength } = storeToRefs(musicStore)
 const songList = ref([])
 
 onMounted(() => {
-    console.log('Current playlist mounted   -->');
     songList.value = getcurrentPlayList.value
 })
 
@@ -26,8 +25,8 @@ onMounted(() => {
                 <p class="text-base italic">Playing n/{{ getCurrentPlayListLength }}</p>
             </div>
         </div>
-        <div class="w-full h-full overflow-y-scroll py-4 px-2">
-            <ListSongCard v-for="(song, index) in songList" :key="song.id" :song="song" :number="index" />
+        <div class="w-full h-full overflow-y-scroll py-4 px-2 pb-24">
+            <ListSongCard v-for="(song, index) in songList" :key="song.id" :song="song" :number="index" :from="'currentList'"/>
         </div>
     </div>
 </template>
