@@ -16,7 +16,7 @@ const props = defineProps({
     <div class="bg-purple-400 w-full px-4 py-2 mb-2 rounded-md shadow-md flex">
         <!-- Number -->
         <span class="w-1/12 m-auto text-center">
-            <h2 class="text-2xl font-bold">{{ number > 10 ? number : '0' + number }}</h2>
+            <h2 class="text-2xl font-bold">{{ number > 8 ? (number + 1) : '0' + (number + 1) }}</h2>
         </span>
         <!-- Thumbnail -->
         <span class="w-2/12 m-auto">

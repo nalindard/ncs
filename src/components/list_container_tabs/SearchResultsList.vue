@@ -17,11 +17,25 @@ const songs = ref([])
 const search = (string) => {
     searchMusic(string)
 }
+const tagSearch = (obj) => {
+    // console.log(obj);
+    if (obj.type === 'Genre') searchGenere(obj.tag)
+    if (obj.type === 'Mood') searchMood(obj.tag)
+}
 
 
 // Search music,
 async function searchMusic(songName) {
+    songs.value = []
     songs.value = await fetchFromAPI(`search/${songName}`)
+}
+async function searchGenere(genre) {
+    songs.value = []
+    songs.value = await fetchFromAPI(`genre/${genre}/1`)
+}
+async function searchMood(mood) {
+    songs.value = []
+    songs.value = await fetchFromAPI(`mood/${mood}/1`)
 }
 
 </script>
@@ -42,11 +56,11 @@ async function searchMusic(songName) {
         </div>
         <div class="w-full h-full overflow-y-scroll py-4 px-2 pb-40">
             <!-- <ListSongCard :song="{}" :number="00"/> -->
-            <ExpandableTags :title="'Genre'" :tag-list="getGenreList" />
-            <ExpandableTags :title="'Mood'" :tag-list="getMoodList" />
+            <ExpandableTags :title="'Genre'" :tag-list="getGenreList" @search="tagSearch" />
+            <ExpandableTags :title="'Mood'" :tag-list="getMoodList" @search="tagSearch" />
             <hr class="mb-4 w-full  mx-auto">
             <!-- {{ songs }} -->
-            <ListSongCard v-for="song,index in songs" :song="toRaw(song) " :number="(index++)" :from="'searchList'"/>
+            <ListSongCard v-for="song, index in songs" :song="toRaw(song)" :number="index" :from="'searchList'" />
         </div>
     </div>
 </template>

@@ -18,9 +18,9 @@ const { tooglePlay, changeCurrentSongIndex,updateCurrentPlayList, } = musicStore
 
 const isThePlayingSong = ref(false)
 
-onMounted(() => {
-    if (props.song.id === getSong.value.id) isThePlayingSong.value = true
-})
+// onMounted(() => {
+//     if (props.song.id === getSong?.value.id) isThePlayingSong.value = true
+// })
 watch(() => getSong.value, () => { if (props.song.id === getSong.value.id) isThePlayingSong.value = true })
 
 // function handlePlay() {
