@@ -37,6 +37,7 @@ export const useMusicStore = defineStore('MusicStore', () => {
         }
     }
     async function updatedefaultSongList(pageNum) {
+        defaultSongListLoading.value = true
         const songs = await fetchFromAPI(`library/${pageNum}`, {})
         defaultSongList.value = songs
         defaultSongListLoading.value = false

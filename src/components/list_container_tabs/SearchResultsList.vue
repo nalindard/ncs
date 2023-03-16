@@ -13,6 +13,7 @@ const uiStore = useUiStore()
 const { getGenreList, getMoodList, } = storeToRefs(uiStore)
 
 const songs = ref([])
+const feedFresh = ref(true)
 
 const search = (string) => {
     searchMusic(string)
@@ -21,6 +22,7 @@ const tagSearch = (obj) => {
     // console.log(obj);
     if (obj.type === 'Genre') searchGenere(obj.tag)
     if (obj.type === 'Mood') searchMood(obj.tag)
+    feedFresh.value = false
 }
 
 
@@ -28,6 +30,7 @@ const tagSearch = (obj) => {
 async function searchMusic(songName) {
     songs.value = []
     songs.value = await fetchFromAPI(`search/${songName}`)
+    feedFresh.value = false
 }
 async function searchGenere(genre) {
     songs.value = []
@@ -61,6 +64,7 @@ async function searchMood(mood) {
             <hr class="mb-4 w-full  mx-auto">
             <!-- {{ songs }} -->
             <ListSongCard v-for="song, index in songs" :song="toRaw(song)" :number="index" :from="'searchList'" />
+            <h2 v-if="songs == 0 && !feedFresh" class="text-7xl uppercase">loading</h2>
         </div>
     </div>
 </template>

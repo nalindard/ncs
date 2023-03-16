@@ -66,7 +66,7 @@ function preSong() {
         changeSong(toRaw(getcurrentPlayList.value)[getCurrentSongIndex.value])
     } else {
         changeSong(toRaw(getcurrentPlayList.value)[0])
-        alert('This is the begining - 😊')
+        console.log('This is the begining - 😊')
     }
 }
 function nextSong() {
@@ -76,7 +76,8 @@ function nextSong() {
     } else {
         changeCurrentSongIndex(0)
         changeSong(toRaw(getcurrentPlayList.value)[getCurrentSongIndex.value])
-        alert('Last song -->');
+        tooglePlay(false)
+        console.log('Last song -->');
     }
 }
 function songDetails() {

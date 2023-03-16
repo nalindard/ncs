@@ -12,32 +12,37 @@ const musicStore = useMusicStore()
 const { defaultSongListLoading, getDefaultSongListLoading, getdefaultSongList, } = storeToRefs(musicStore)
 const { updatedefaultSongList, } = musicStore
 
+const songList = ref([])
+
 onMounted(() => {
     updatedefaultSongList(1)
 })
 
-const songList = ref([])
-
 watch(() => getDefaultSongListLoading.value, () => {
     if (getDefaultSongListLoading.value === false) {
         songList.value = getdefaultSongList.value
-
         // console.log(songList.value);
     }
 })
 
+function updateList(pageNum) {
+    songList.value = []
+    updatedefaultSongList(pageNum)
+}
+
 </script>
 
 <template>
-    <div class="w-full h-full bg-purple-300 text-purple-50">
+    <h2 v-if="songList == 0" class="text-7xl uppercase">loading</h2>
+    <div v-else class="w-full h-full bg-purple-300 text-purple-50">
         <!-- Head -->
         <div class="flex justify-between items-center px-6 py-4">
             <div class="flex-grow">
                 <h2 class="text-4xl font-extrabold"> Default Page </h2>
             </div>
-            <PagePagination />
+            <PagePagination @page-change="updateList" />
         </div>
-        <LeftFeedShowButton class="absolute top-2 right-64"/>
+        <LeftFeedShowButton class="absolute top-2 right-64" />
         <!-- Body -->
         <div class="w-full h-full flex flex-wrap items-start overflow-y-scroll pb-24">
             <SongCard v-for="song in songList" :data="song" :key="song.id" />
