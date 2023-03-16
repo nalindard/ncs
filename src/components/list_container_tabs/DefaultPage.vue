@@ -3,6 +3,7 @@ import { ref, watch, onMounted } from 'vue'
 import SongCard from '../SongCard.vue';
 import PagePagination from '../PagePagination.vue'
 import LeftFeedShowButton from './LeftFeedShowButton.vue';
+import LoadingAnimation2 from '../LoadingAnimation2.vue';
 
 
 import { storeToRefs } from 'pinia';
@@ -33,19 +34,23 @@ function updateList(pageNum) {
 </script>
 
 <template>
-    <h2 v-if="songList == 0" class="text-7xl uppercase">loading</h2>
-    <div v-else class="w-full h-full bg-purple-300 text-purple-50">
+    <!-- <h2  class="text-7xl uppercase">loading</h2> -->
+
+    <div class="w-full h-full bg-purple-300 text-purple-50">
         <!-- Head -->
         <div class="flex justify-between items-center px-6 py-4">
             <div class="flex-grow">
                 <h2 class="text-4xl font-extrabold"> Default Page </h2>
             </div>
-            <PagePagination @page-change="updateList" />
+                <PagePagination @page-change="updateList" />
         </div>
         <LeftFeedShowButton class="absolute top-2 right-64" />
         <!-- Body -->
         <div class="w-full h-full flex flex-wrap items-start overflow-y-scroll pb-24">
-            <SongCard v-for="song in songList" :data="song" :key="song.id" />
+            <div v-if="songList == 0" class="w-full h-full grid place-items-center">
+                <LoadingAnimation2 />
+            </div>
+            <SongCard v-else v-for="song in songList" :data="song" :key="song.id" />
         </div>
     </div>
 </template>

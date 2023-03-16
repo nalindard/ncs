@@ -5,6 +5,7 @@ import { storeToRefs } from 'pinia';
 import { useUiStore } from '../../stores/UiStore';
 import { fetchFromAPI } from '@/helpers/fetchFrom'
 import { ref, toRaw } from 'vue';
+import LoadingAnimation from '../LoadingAnimation.vue';
 
 // Trying to Implant right feed to here,
 import SearchBar from '../SearchBar.vue';
@@ -64,7 +65,10 @@ async function searchMood(mood) {
             <hr class="mb-4 w-full  mx-auto">
             <!-- {{ songs }} -->
             <ListSongCard v-for="song, index in songs" :song="toRaw(song)" :number="index" :from="'searchList'" />
-            <h2 v-if="songs == 0 && !feedFresh" class="text-7xl uppercase">loading</h2>
+            <!-- <h2 v-if="songs == 0 && !feedFresh" class="text-7xl uppercase">loading</h2> -->
+            <div v-if="songs == 0 && !feedFresh" class="grid place-items-center">
+                <LoadingAnimation />
+            </div>
         </div>
     </div>
 </template>
