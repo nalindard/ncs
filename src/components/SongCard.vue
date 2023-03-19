@@ -45,7 +45,9 @@ const { updateCurrentPlayList, addToCurrentPlayList } = musicStore
                     <!-- {{ props.data.download.regular }} -->
                 </button>
                 <button class="flex-grow bg-purple-400 p-2 rounded hover:bg-purple-200">
-                    Download
+                    <a :href="data.download.regular" target="_blank" rel="noopener noreferrer">
+                        Download
+                    </a>
                 </button>
             </span>
             <!-- {{ props.data}} -->

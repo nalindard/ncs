@@ -23,7 +23,7 @@ export const useMusicStore = defineStore('MusicStore', () => {
     const getcurrentPlayList = computed(() => currentPlayList.value)
     const getCurrentPlayListLength = computed(() => currentPlayListLength.value)
     const getfavouriteSongList = computed(() => favouriteSongList.value)
-    const getCurrentSongIndex = computed(()=> currentSongIndex.value)
+    const getCurrentSongIndex = computed(() => currentSongIndex.value)
 
     // Actions,
     function tooglePlay(bool) {
@@ -50,18 +50,23 @@ export const useMusicStore = defineStore('MusicStore', () => {
         // console.log(currentPlayList.value);
     }
     function addToCurrentPlayList(song) {
-        currentPlayList.value.push(song)
-        // console.log('A song added', song, currentPlayList.value)
-        playListLength()
+        if (currentPlayList.value.length === 0) {
+            updateCurrentPlayList(song)
+            playListLength()
+        } else {
+            currentPlayList.value.push(song)
+            playListLength()
+            // console.log('A song added', song, currentPlayList.value)
+        }
     }
     // Replace current playlist
     function playListLength() {
         currentPlayListLength.value = currentPlayList.value.length
         console.log('Length fixed --> ', currentPlayListLength.value)
     }
-    function changeCurrentSongIndex(index){
+    function changeCurrentSongIndex(index) {
         currentSongIndex.value = index
-        console.log(`Current song changed: ${index}`);
+        console.log(`Current song changed: ${index}`)
     }
 
     // Exports,
