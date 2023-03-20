@@ -11,11 +11,9 @@
 <style scoped>
 .loader,
 .loader-2 {
-    border: 16px solid #f3f3f3;
+    border: 16px solid #ffffffc4;
     border-radius: 50%;
-    border-top: 20px inset #707070;
-    /*border-right: 16px solid green;
-  border-bottom: 16px solid red;*/
+    border-top: 20px inset #ffffffc6;
     width: 120px;
     height: 120px;
     -webkit-animation: spin 2s linear infinite;
@@ -23,7 +21,6 @@
 
     position: absolute;
     opacity: .2;
-    /*background-color: #707070;*/
 }
 
 .loader-2 {

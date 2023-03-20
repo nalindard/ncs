@@ -17,11 +17,16 @@ const { getlistContainerTab, getlistContainerTabList } = storeToRefs(store)
 </script>
 
 <template>
-    <div class="w-full flex-grow py-2 px-2 my-2 rounded-xl relative overflow-clip ">
-        <span class="absolute inset-0 h-full w-16 border-r flex flex-col  ">
+    <div class="w-full flex-grow py-1 md:py-2 px-1 md:px-2 my-1 md:my-2 rounded-xl relative overflow-clip ">
+
+        <span class="absolute border-t border-l border-blue-200 md:inset-0 md:h-full md:w-16 lg:w-20 border-r flex md:flex-col  
+                             bottom-0 right-0 left-0 w-full h-12 z-50
+                ">
             <ListContainerButton v-for="tab in getlistContainerTabList" :key="tab.id" :name="tab.name" :icon="tab.icon" />
         </span>
-        <span class="absolute top-0 right-0 h-full w-11/12 flex-grow">
+        <span class="absolute border-t border-l border-blue-200 md:top-0 md:right-0 md:h-full md:pl-16 lg:pl-20 flex-grow
+                             top-0 right-0 left-0 w-full h-[92%] overflow-hidden
+                ">
             <!-- Default page -->
             <KeepAlive>
                 <DefaultPage v-if="getlistContainerTab === 'defaultPage'" />
@@ -44,5 +49,7 @@ const { getlistContainerTab, getlistContainerTabList } = storeToRefs(store)
             <!-- Audio visualizer -->
             <AudioVisualizer v-if="getlistContainerTab === 'audioVisualizer'" />
         </span>
+
+
     </div>
 </template>

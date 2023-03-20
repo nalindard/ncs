@@ -13,12 +13,12 @@ const props = defineProps({
 </script>
 
 <template>
-    <span class="flex-grow"
-    :class="getlistContainerTab === props.name ? 'text-purple-700' : 'text-purple-50'">
+    <span class="flex-grow bg-opacity-70"
+    :class="getlistContainerTab === props.name ? 'text-blue-700' : 'text-blue-50'">
         <button @click="changeListContainerTab(props.name)"
-        class="w-full h-full hover:bg-purple-200"
-            :class="getlistContainerTab === props.name ? 'bg-purple-300' : 'bg-purple-500'">
-            <i class="fa-solid" :class="props.icon || 'fa-indent'"></i>
+        class="w-full h-full hover:bg-blue-200 bg-opacity-70"
+            :class="getlistContainerTab === props.name ? 'bg-blue-300' : 'bg-blue-500'">
+            <i class="fa-solid scale-75 md:scale-90 lg:scale-100" :class="props.icon || 'fa-indent'"></i>
         </button>
     </span>
 </template>

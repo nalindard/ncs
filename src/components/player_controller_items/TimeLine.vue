@@ -28,19 +28,19 @@ function seek(e) {
 </script>
 
 <template>
-    <div class="flex justify-evenly items-center relative w-11/12 bg-purple-200 px-4 rounded-lg ">
+    <div class="flex justify-evenly items-center relative w-full bg-blue-200 bg-opacity-50 px-4 rounded-full">
         <!-- Timer -->
-        <h6>{{ getCurrentTime.mm + ':' + getCurrentTime.ss }}</h6>
+        <h6 class="text-xs md:text-base px-2">{{ getCurrentTime.mm + ':' + getCurrentTime.ss }}</h6>
         <span class="bg-red-700 w-10/12 relative flex items-center">
             <!-- This is the visible timeline -->
             <input type="range" name="timer" min="0" :max="length.time" :value="getCurrentTime.time"
-                class="w-full h-2 absolute top-0 right-0 bg-purple-50 rounded-lg appearance-none">
+                class="w-full h-1 absolute top-0 right-0 bg-blue-50 bg-opacity-50 rounded-lg appearance-none">
 
             <!-- This is a invisible replica of above, this use for get the user input 😉 -->
             <input type="range" min="0" :max="length.time"
-                class="w-full h-2 absolute top-0 right-0 bg-purple-500 opacity-25 rounded-lg appearance-none cursor-pointer"
+                class="w-full h-1 absolute top-0 right-0 bg-blue-500 bg-opacity-50 opacity-0 rounded-lg appearance-none cursor-pointer"
                 @change="seek">
         </span>
-        <h6>{{ length.mm + ':' + length.ss }}</h6>
+        <h6 class="text-xs md:text-base px-2">{{ length.mm + ':' + length.ss }}</h6>
     </div>
 </template>

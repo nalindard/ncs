@@ -22,29 +22,31 @@ const { updateCurrentPlayList, addToCurrentPlayList } = musicStore
 </script>
 
 <template>
-    <div class="flex flex-col 2xl:w-2/12 lg:w-3/12 md:w-4/12 sm:w-2/4 py-2 px-2 mb-2 ">
-        <div class="border p-1 bg-purple-500 hover:scale-105 ">
+    <div class="flex flex-col 2xl:w-2/12 lg:w-3/12 md:w-4/12 sm:w-2/4 w-full py-2 px-2 mb-2 ">
+        <div class="border-t border-l border-blue-200 p-4 bg-blue-500 bg-opacity-20 hover:scale-105 rounded-lg shadow-md shadow-blue-400">
             <span class="relative group  overflow-hidden song-img grid place-items-center">
-                <img :src="props.data.coverUrl" alt="song-thumbnail">
+                <span class="overflow-hidden flex items-center aspect-video md:aspect-square w-full rounded-lg">
+                    <img :src="props.data.coverUrl" alt="song-thumbnail" class="scale-125 md:scale-100 mx-auto w-full">
+                </span>
                 <span
-                    class="bg-purple-500 bg-opacity-50 backdrop-blur-sm absolute w-full opacity-0 group-hover:opacity-100 inset-0 flex justify-center items-center">
-                    <button class="rounded-full py-2 px-4 bg-purple-500" @click="addToCurrentPlayList(toRaw(props.data))">
+                    class="bg-blue-500 bg-opacity-50 backdrop-blur-sm absolute w-full opacity-0 group-hover:opacity-100 inset-0 flex justify-center items-center">
+                    <button class="rounded-full py-2 px-4 bg-blue-500 bg-opacity-20 border-t border-l border-blue-200" @click="addToCurrentPlayList(toRaw(props.data))">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </span>
             </span>
             <span class="song-info">
-                <h2 class="text-2xl font-bold song-info">{{ props.data.name }}</h2>
+                <h2 class="text-lg md:text-2xl font-extrabold song-info">{{ props.data.name }}</h2>
                 <h4 class="text-base italic song-info">{{ props.data.artists[0].name }}</h4>
             </span>
-            <span class="w-full rounded flex gap-2 text-purple-50">
-                <!-- <button @click="changeSong(props.data)" class="flex-grow bg-purple-400 p-2 rounded hover:bg-purple-200"> -->
+            <span class="w-full rounded flex gap-4 text-blue-50">
+                <!-- <button @click="changeSong(props.data)" class="flex-grow bg-blue-400 p-2 rounded hover:bg-blue-200"> -->
                 <button @click="updateCurrentPlayList(toRaw(props.data))"
-                    class="flex-grow bg-purple-400 p-2 rounded hover:bg-purple-200">
+                    class="flex-grow bg-blue-400 bg-opacity-50 border-t border-l border-blue-200 p-1 rounded-full hover:bg-blue-200 font-bold text-sm md:text-base">
                     Play
                     <!-- {{ props.data.download.regular }} -->
                 </button>
-                <button class="flex-grow bg-purple-400 p-2 rounded hover:bg-purple-200">
+                <button class="flex-grow bg-blue-400 bg-opacity-50 border-t border-l border-blue-200 p-1 rounded-full hover:bg-blue-200 font-bold text-sm md:text-base">
                     <a :href="data.download.regular" target="_blank" rel="noopener noreferrer">
                         Download
                     </a>

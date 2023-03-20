@@ -12,7 +12,7 @@ export const useUiStore = defineStore('UiStore', () => {
         { id: 6, name: 'audioVisualizer', icon: 'fa-sliders' },
     ])
     const listContainerTab = ref('defaultPage')
-    const showWelcomBanner = ref(false)
+    const showWelcomBanner = ref(true)
     const showLeftFeed = ref(false)
     const genreList = [
         'Bass',

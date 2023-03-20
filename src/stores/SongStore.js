@@ -10,6 +10,9 @@ export const useSongStore = defineStore('SongStore', () => {
     const songSeekedTime = ref(0)
     const currentTime = ref(0)
     const visualizerData = ref([])
+    const repeat = ref(false)
+    const suffle = ref(false)
+    const buffering = ref(false)
 
     // Getters,
     const getSong = computed(() => song.value)
@@ -32,6 +35,9 @@ export const useSongStore = defineStore('SongStore', () => {
         return { time: currentTime.value, mm: m, ss: s }
     })
     const getVisualizerData = computed(() => visualizerData.value)
+    const getRepeat = computed(() => repeat.value)
+    const getSuffle = computed(() => suffle.value)
+    const getBuffering = computed(() => buffering.value)
 
     // Actions,
     function changeSong(newSong) {
@@ -59,6 +65,20 @@ export const useSongStore = defineStore('SongStore', () => {
     function changeVisualizerData(data) {
         visualizerData.value = data
     }
+    function changeRepeat(bool) {
+        repeat.value = bool
+        console.log('Repeat or suffle --> ', repeat.value)
+    }
+    function changeSuffle(bool) {
+        suffle.value = bool
+        console.log('Repeat or suffle --> ', suffle.value)
+    }
+    function changeBuffering() {
+        if (!buffering.value) {
+            buffering.value = true
+            setTimeout(() => (buffering.value = false), 720)
+        }
+    }
 
     // Exports,
     return {
@@ -83,5 +103,15 @@ export const useSongStore = defineStore('SongStore', () => {
         // Visualizer,
         getVisualizerData,
         changeVisualizerData,
+
+        //
+        getRepeat,
+        changeRepeat,
+
+        getSuffle,
+        changeSuffle,
+
+        getBuffering,
+        changeBuffering,
     }
 })

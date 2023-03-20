@@ -13,20 +13,20 @@ const { getPlaying, getVolume, getcurrentPlayList, getCurrentPlayListLength, get
 const { tooglePlay, changeCurrentSongIndex, } = musicStore
 
 const songStore = useSongStore()
-const { getSong, getSongSeekedTime, } = storeToRefs(songStore)
-const { changeSong, changeSongDuration, changegeCurrentTime } = songStore
+const { getSong, getSongSeekedTime, getRepeat, getSuffle, } = storeToRefs(songStore)
+const { changeSong, changeSongDuration, changegeCurrentTime, changeBuffering } = songStore
 
 const song = new Audio()
 // const song = document.createElement('audio')
 let songIndex = +0
-let songCount = 0
+// let songCount = 0
 const songLoading = ref(true)
 
 watch(() => getcurrentPlayList.value, () => updateSongStore())
 watch(() => getSong.value, () => songPlay())
 watch(() => getPlaying.value, () => getPlaying.value ? song.play() : songPause())
 watch(() => getVolume.value, () => song.volume = getVolume.value)
-watch(() => getCurrentPlayListLength.value, () => songCount = getCurrentPlayListLength.value)
+// watch(() => getCurrentPlayListLength.value, () => songCount = getCurrentPlayListLength.value)
 watch(() => getSongSeekedTime.value, seek)
 watch(() => getCurrentSongIndex.value, newSong)
 
@@ -43,6 +43,7 @@ function songPlay() {
     // vizualise(song)
     song.addEventListener('loadedmetadata', songDetails)
     song.addEventListener("ended", () => songEnded())
+    song.addEventListener('progress', buffering)
     tooglePlay(true)
 
     // Visualizer,
@@ -58,6 +59,8 @@ function songPause() {
 }
 function songEnded() {
     tooglePlay(false)
+    // repeat()
+    suffel()
     nextSong()
 }
 function preSong() {
@@ -70,7 +73,7 @@ function preSong() {
     }
 }
 function nextSong() {
-    if ((songCount - 1) > getCurrentSongIndex.value) {
+    if ((getCurrentPlayListLength.value - 1) > getCurrentSongIndex.value) {
         changeCurrentSongIndex(getCurrentSongIndex.value + 1)
         changeSong(toRaw(getcurrentPlayList.value)[getCurrentSongIndex.value])
     } else {
@@ -92,11 +95,21 @@ function seek() {
     song.currentTime = getSongSeekedTime.value
     console.log('Song seeked !')
 }
-function newSong(){
+function newSong() {
     console.log(getCurrentSongIndex.value);
     changeSong(toRaw(getcurrentPlayList.value)[getCurrentSongIndex.value])
 }
-
+function repeat() {
+    if (getRepeat.value && getCurrentSongIndex.value > 0) {
+        changeCurrentSongIndex(getCurrentSongIndex.value - 1)
+    }
+}
+function suffel() {
+    if (getSuffle.value) {
+        let number = Math.floor(Math.random() * getCurrentPlayListLength.value)
+        changeCurrentSongIndex(number)
+    }
+}
 
 let intervel = setInterval(timeChange, 1000)
 
@@ -107,6 +120,10 @@ function timeChange() {
     }
 }
 
+function buffering(){
+    console.log('Buffering');
+    changeBuffering()
+}
 
 // Setting up for vizualiser 🎧🎛️🎚️🎵
 function vizualise() {
@@ -142,12 +159,14 @@ function vizualise() {
 
 <template>
     <div
-        class="group bg-purple-300 w-full px-4 py-2 flex justify-center items-center flex-col rounded-xl accent-purple-700 text-purple-700 shadow-xl">
-        <!-- Time Line-->
-        <TimeLine />
-
-        <!-- Volume Slider -->
-        <SoundBar class="hidden" />
+        class="group bg-blue-300 bg-opacity-75 w-full px-4 py-2 flex justify-center items-center flex-col rounded-xl accent-blue-700 text-blue-50 shadow-xl">
+        <div class="w-full lg:flex gap-5 text-center">
+            <!-- Time Line-->
+            <TimeLine />
+            
+            <!-- Volume Slider -->
+            <SoundBar />
+        </div>
 
         <!-- Buttons -->
         <PlayerButtonBar @preSong="preSong" @nextSong="nextSong" />

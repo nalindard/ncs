@@ -25,15 +25,15 @@ const nextPage = () => {
     <div>
         <ol class="flex justify-center gap-1 text-xs font-medium">
             <button @click="prePage"
-                class="flex h-8 w-8 items-center justify-center rounded border border-gray-100 disabled:hidden"
+                class="flex h-8 lg:h-8 w-6 lg:w-8 items-center justify-center rounded border-t border-l border-blue-200 shadow shadow-blue-50 disabled:hidden"
                 :disabled="page < 2 ? true : false">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <button class="block h-8 w-8 rounded border border-gray-100 text-center leading-8">
+            <button class="block h-8 lg:h-8 w-6 lg:w-8 rounded border-t border-l border-blue-200 shadow shadow-blue-50 text-center leading-8">
                 {{ page }}
             </button>
             <button @click="nextPage"
-                class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100">
+                class="inline-flex h-8 lg:h-8 w-6 lg:w-8 items-center justify-center rounded border-t border-l border-blue-200 shadow shadow-blue-50">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </ol>

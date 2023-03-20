@@ -14,7 +14,7 @@
     /* background-color: rgb(45, 45, 45); */
     background-color: transparent;
     animation: rotation ease-out 2.7s infinite;
-    box-shadow: inset 0 0 40px 12px rgb(255, 255, 255);
+    box-shadow: inset 0 0 40px 12px rgba(255, 255, 255, 0.789);
 }
 
 .child {
@@ -23,7 +23,7 @@
     background-color: rgb(254, 240, 255);
     border-radius: 50%;
     animation: cycle ease-in 1.7s infinite;
-    box-shadow: inset 0 0 8px 7px rgb(255, 194, 255);
+    box-shadow: inset 0 0 8px 7px rgb(194, 204, 255);
 }
 
 @keyframes rotation {
