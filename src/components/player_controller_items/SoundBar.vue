@@ -14,7 +14,7 @@ watch(volume, () => changeVolume(volume.value))
 </script>
 
 <template>
-    <span class="bg-blue-200 bg-opacity-50 rounded-full px-4 py-2 mt-1 items-center flex justify-evenly mx-auto w-8/12 lg:w-3/12">
+    <span class="bg-blue-200 bg-opacity-50 rounded-full px-4 py-2 items-center flex justify-evenly mx-auto w-8/12 lg:w-3/12">
         <!-- <i class="fa-solid fa-volume-xmark"></i> -->
         <i class="fa-solid fa-volume-off fa-sm scale-75 md:scale-90 lg:scale-100"></i>
         <div class="flex justify-center items-center w-full">

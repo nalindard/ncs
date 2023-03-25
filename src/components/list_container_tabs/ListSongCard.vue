@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="bg-blue-400 bg-opacity-25 border-t border-l border-blue-200 w-full px-1 md:px-4 py-1 md:py-2 mb-2 rounded-md shadow-md shadow-blue-400 flex">
+    <div class="bg-blue-400 bg-opacity-25 hover:bg-opacity-50 hover:scale-[101%] transition-all border-t border-l border-blue-200 w-full px-1 md:px-4 py-1 md:py-2 mb-2 rounded-md shadow-md shadow-blue-400 flex">
         <!-- Number -->
         <span class="w-1/12 m-auto text-center">
             <h2 class="text-sm md:text-2xl font-bold">{{ number > 8 ? (number + 1) : '0' + (number + 1) }}</h2>

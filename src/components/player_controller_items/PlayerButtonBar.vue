@@ -29,37 +29,37 @@ const toogle = () => {
 <template>
         <div class="bg-blue-200 bg-opacity-40 mt-1 px-1 md:px-2 lg:px-3 py-0 lg:py-1 rounded-full w-full sm:w-10/12 md:w-8/12 flex justify-evenly items-center">
             <!-- Like -->
-            <button class="bg-blue-200 bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square hidden md:block ">
+            <button class="bg-blue-200 hover:bg-blue-400 hover:scale-105 transition-all bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square hidden md:block ">
                 <i class="fa-regular fa-heart fa-sm"></i></button>
             <!-- fa-solid -->
 
             <!-- Repeat -->
-            <button @click="changeRepeat(!getRepeat)" class="bg-blue-200 bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square"
+            <button @click="changeRepeat(!getRepeat)" class="bg-blue-200 hover:bg-blue-400 hover:scale-105 transition-all bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square"
                 :class="getRepeat ? 'bg-blue-500 bg-opacity-50 text-blue-50' : ''">
                 <i class="fa-solid fa-repeat fa-sm"></i></button>
 
             <!-- Pre Song -->
-            <button @click="emit('preSong')" class="bg-blue-200 bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square"><i
+            <button @click="emit('preSong')" class="bg-blue-200 hover:bg-blue-400 hover:scale-105 transition-all bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square"><i
                     class="fa-solid fa-caret-left fa-lg"></i></button>
 
             <!-- Play/Pause -->
-            <button class="bg-blue-200 bg-opacity-50 p-1 rounded-full w-14 aspect-square scale-75 md:scale-90 lg:scale-95" @click="toogle" :disabled="getSong === null">
+            <button class="bg-blue-200 hover:bg-blue-400 hover:scale-105 transition-all bg-opacity-50 p-1 rounded-full w-14 aspect-square scale-75 md:scale-90 lg:scale-95" @click="toogle" :disabled="getSong === null">
                 <!-- :disabled="playBtnDisabled ? 'true' : 'false'" -->
                 <i v-if="getBuffering" class="fas fa-circle-notch fa-spin fa-xl"></i>
                 <i v-else class="fa-solid fa-xl" :class="getPlaying ? 'fa-pause' : 'fa-play'"></i>
             </button>
 
             <!-- Next Song -->
-            <button @click="emit('nextSong')" class="bg-blue-200 bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square"><i
+            <button @click="emit('nextSong')" class="bg-blue-200 hover:bg-blue-400 hover:scale-105 transition-all bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square"><i
                     class="fa-solid fa-caret-right fa-lg"></i></button>
 
             <!-- Suffel -->
-            <button @click="changeSuffle(!getSuffle)" class="bg-blue-200 bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square"
+            <button @click="changeSuffle(!getSuffle)" class="bg-blue-200 hover:bg-blue-400 hover:scale-105 transition-all bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square"
                 :class="getSuffle ? 'bg-blue-500 bg-opacity-50 text-blue-50' : ''">
                 <i class="fa-solid fa-shuffle fa-sm"></i></button>
 
             <!-- Add -->
-            <button class="bg-blue-200 bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square hidden md:block ">
+            <button class="bg-blue-200 hover:bg-blue-400 hover:scale-105 transition-all bg-opacity-50 p-1 rounded-full w-10 scale-75 md:scale-90 lg:scale-95 aspect-square hidden md:block ">
                 <i class="fa-solid fa-plus fa-sm"></i></button>
         </div>
 </template>

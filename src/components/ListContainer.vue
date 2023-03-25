@@ -24,7 +24,7 @@ const { getlistContainerTab, getlistContainerTabList } = storeToRefs(store)
                 ">
             <ListContainerButton v-for="tab in getlistContainerTabList" :key="tab.id" :name="tab.name" :icon="tab.icon" />
         </span>
-        <span class="absolute border-t border-l border-blue-200 md:top-0 md:right-0 md:h-full md:pl-16 lg:pl-20 flex-grow
+        <span class="absolute border-t border-l border-blue-200 md:top-0 md:right-0 md:h-full md:pl-16 lg:pl-20 flex-grow transition-all
                              top-0 right-0 left-0 w-full h-[92%] overflow-hidden
                 ">
             <!-- Default page -->

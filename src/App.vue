@@ -1,9 +1,10 @@
 <script setup>
-import HomeView from '@/views/HomeView.vue';
+import { RouterView } from 'vue-router';
+
 </script>
 
 <template>
   <main class="min-h-screen w-screen">
-    <HomeView />
+    <RouterView />
   </main>
 </template>

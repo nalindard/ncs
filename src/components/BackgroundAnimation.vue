@@ -24,16 +24,16 @@
     width: 72%;
     /* height: 50%; */
     aspect-ratio: 1;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite alternate;
+    -webkit-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite alternate;
     background-color: rgba(255, 255, 255, 0.57);
     opacity: .9;
 }
 
 .loader-2 {
     background-color: rgba(0, 0, 255, 0.442);
-    animation: spin 2s linear infinite alternate;
-    /* animation-delay: 2s; */
+    animation: spin 4s linear infinite alternate;
+    animation-delay: 2s;
 }
 
 
