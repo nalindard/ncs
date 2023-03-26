@@ -15,6 +15,7 @@ const proceed = () => {
         <div id="anime" class="absolute top-[30%] right-[40%] h-56 w-56 rounded-md border-8 border-orange-200 z-0 bg-orange-100 bg-opacity-25 backdrop-blur-sm hidden lg:block"></div>
 
         <!-- Content -->
+        <transition appear name="slipe">
         <div class="backdrop-blur-sm bg-orange-100 bg-opacity-25 border-r border-orange-200 shadow-sm shadow-orange-50 flex justify-center items-center flex-col h-full w-full sm:w-8/12 lg:w-5/12 py-7 z-20">
             <h2 class="text-3xl lg:text-4xl uppercase font-semibold pb-7 underline underline-offset-8">User profile page</h2>
             <form class="flex flex-col w-11/12 sm:w-9/12 lg:w-8/12" @submit.prevent="proceed">
@@ -35,6 +36,7 @@ const proceed = () => {
                 <button :class="signUp ? '': 'bg-orange-50'" class="flex-grow py-2 bg-orange-400 bg-opacity-50 transition-colors" @click="signUp = true">SIGNUP</button>
             </span>
         </div>
+        </transition>
 
         <!-- Image credit -->
         <span class="fixed bottom-2 md:bottom-4 right-2 md:right-4 text-xs scale-75 md:scale-90 lg:scale-100">
@@ -60,5 +62,14 @@ const proceed = () => {
 @keyframes spin {
     0%{transform: rotate(0deg);}
     100%{transform: rotate(360deg);}
+}
+
+.slipe-enter-from{
+  opacity: 0;
+  transform: scale(0.9);
+  text-align: center;
+}
+.slipe-enter-active{
+  transition: all 1.2s  ease;
 }
 </style>

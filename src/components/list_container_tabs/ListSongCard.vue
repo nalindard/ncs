@@ -13,6 +13,7 @@ const props = defineProps({
 </script>
 
 <template>
+    <transition appear name="slipe">
     <div class="bg-blue-400 bg-opacity-25 hover:bg-opacity-50 hover:scale-[101%] transition-all border-t border-l border-blue-200 w-full px-1 md:px-4 py-1 md:py-2 mb-2 rounded-md shadow-md shadow-blue-400 flex">
         <!-- Number -->
         <span class="w-1/12 m-auto text-center">
@@ -31,6 +32,7 @@ const props = defineProps({
         <SongCardSubMenu :number="number" :song="song" v-if="from === 'currentList'"/>
         <SearchCardSubMenu :number="number" :song="song" v-if="from === 'searchList'"/>
     </div>
+</transition>
 </template>
 
 <style scoped>
@@ -39,5 +41,21 @@ const props = defineProps({
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.slipe-enter-from{
+  opacity: 0;
+  transform: translateX(-100px);
+}
+.slipe-enter-active{
+    transition: all .4s  ease;
+}
+.slipe-leave-to {
+    opacity: 0;
+}
+
+.slipe-leave-active {
+    transition: all 0.4s ease;
+    transform: translateX(100px);
 }
 </style>

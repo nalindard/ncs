@@ -11,7 +11,9 @@
 
       <!-- Title -->
       <div class=" sticky top-0 z-20 mb-7 shadow-xl bg-black bg-opacity-50">
-        <h2 class="text-3xl sm:text-4xl md:text-6xl py-7 text-center font-semibold backdrop-blur-md">About page</h2>
+        <transition appear name="slipe">
+          <h2 class="text-3xl sm:text-4xl md:text-6xl py-7 text-center font-semibold backdrop-blur-md">About page</h2>
+        </transition>
       </div>
 
       <div class="text-center text-lg md:text-xl font-semibold backdrop-blur-md bg-red-600 bg-opacity-60 rounded-lg px-2 py-4 my-4 mx-auto w-10/12 md:w-8/12 hi">This is abbandoned. I don't develop this now 🥱</div>
@@ -68,8 +70,7 @@
               <li>Seek tracks.</li>
               <li>Repeat.</li>
               <li>Suffel.</li>
-              <li>Volume cotrole.</li>
-              <li>Suffel.</li>
+              <li>Volume control.</li>
               <li>...</li>
             </ol>
           </div>
@@ -123,4 +124,13 @@
   </div>
 </template>
 
-<style lang="css"></style>
+<style lang="css">
+.slipe-enter-from{
+  opacity: 0;
+  transform: scale(0.7);
+  text-align: center;
+}
+.slipe-enter-active{
+  transition: all 1.2s  ease;
+}
+</style>

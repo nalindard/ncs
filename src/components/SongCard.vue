@@ -22,6 +22,7 @@ const { updateCurrentPlayList, addToCurrentPlayList } = musicStore
 </script>
 
 <template>
+    <transition appear name="slipe">
     <div class="flex flex-col 2xl:w-2/12 lg:w-3/12 md:w-4/12 sm:w-2/4 w-full py-2 px-2 mb-2 ">
         <div class="border-t border-l border-blue-200 p-4 bg-blue-500 bg-opacity-20 hover:scale-105 transition-all rounded-lg shadow-md shadow-blue-400">
             <span class="relative group  overflow-hidden song-img grid place-items-center">
@@ -55,6 +56,7 @@ const { updateCurrentPlayList, addToCurrentPlayList } = musicStore
             <!-- {{ props.data}} -->
         </div>
     </div>
+</transition>
 </template>
 
 <style scoped>
@@ -67,5 +69,21 @@ const { updateCurrentPlayList, addToCurrentPlayList } = musicStore
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.slipe-enter-from{
+  opacity: 0;
+  transform: translateX(-100px);
+}
+.slipe-enter-active{
+    transition: all .4s  ease;
+}
+.slipe-leave-to {
+    opacity: 0;
+}
+
+.slipe-leave-active {
+    transition: all 0.4s ease;
+    transform: translateX(100px);
 }
 </style>

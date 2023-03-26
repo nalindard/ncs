@@ -27,29 +27,60 @@ const { getlistContainerTab, getlistContainerTabList } = storeToRefs(store)
         <span class="absolute border-t border-l border-blue-200 md:top-0 md:right-0 md:h-full md:pl-16 lg:pl-20 flex-grow transition-all
                              top-0 right-0 left-0 w-full h-[92%] overflow-hidden
                 ">
-            <!-- Default page -->
+
+                <!-- Default page -->
+            <transition appear name="slipe">
             <KeepAlive>
                 <DefaultPage v-if="getlistContainerTab === 'defaultPage'" />
             </KeepAlive>
+            </transition>
 
             <!-- Current song list -->
+            <transition appear name="slipe">
             <CurrentSongList v-if="getlistContainerTab === 'currentSongList'" />
+            </transition>
 
             <!-- Favourite list -->
+            <transition appear name="slipe">
             <FavouritesList v-if="getlistContainerTab === 'favouritesList'" />
+            </transition>
 
             <!-- Search results -->
+            <transition appear name="slipe">
             <KeepAlive>
                 <SearchResultsList v-if="getlistContainerTab === 'searchResultsList'" />
             </KeepAlive>
+            </transition>
 
             <!-- User info -->
+            <transition appear name="slipe">
             <UserInfo v-if="getlistContainerTab === 'userInfo'" />
+            </transition>
 
             <!-- Audio visualizer -->
+            <transition appear name="slipe">
             <AudioVisualizer v-if="getlistContainerTab === 'audioVisualizer'" />
+            </transition>
         </span>
 
 
     </div>
 </template>
+
+<style scoped>
+.slipe-enter-from{
+    opacity: 0;
+    transform: scale(0.99);
+    transition-delay: 0.4s;
+}
+.slipe-enter-active{
+    transition: all .4s  ease;
+}
+.slipe-leave-to {
+    opacity: 0;
+}
+
+.slipe-leave-active {
+    transition: all 0.4s ease;
+}
+</style>
